@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='extrato.css') }}">
+    <title>Extrato</title>
+   
+    <script>
+        function enableEditing(rowId) {
+            const row = document.getElementById(rowId);
+            const inputs = row.querySelectorAll('input');
+            inputs.forEach(input => input.removeAttribute('disabled'));
+            row.querySelector('.edit-btn').style.display = 'none';
+            row.querySelector('.save-btn').style.display = 'inline-block';
+        }
+
+        function disableEditing(rowId) {
+            const row = document.getElementById(rowId);
+            const inputs = row.querySelectorAll('input');
+            inputs.forEach(input => input.setAttribute('disabled', 'disabled'));
+            row.querySelector('.edit-btn').style.display = 'inline-block';
+            row.querySelector('.save-btn').style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+    <h1>Extrato Geral</h1>
+    <form action="{{ url_for('assinar') }}" method="post">
+        <table>
+            <thead>
+                <tr>
+                    <th>Serviço</th>
+                    <th>Órgão</th>
+                    <th>Unidade</th>
+                    <th>Quantidade</th>
+                    <th>Data/Hora</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for resultado in resultados %}
+                    <tr id="row_{{ resultado.id }}">
+                        <td><input type="text" name="servico_nome_{{ resultado.id }}" value="{{ resultado.servico_nome }}" disabled></td>
+                        <td><input type="text" name="orgao_nome_{{ resultado.id }}" value="{{ resultado.orgao_nome }}" disabled></td>
+                        <td><input type="text" name="unidade_nome_{{ resultado.id }}" value="{{ resultado.unidade_nome }}" disabled></td>
+                        <td><input type="number" name="quantidade_{{ resultado.id }}" value="{{ resultado.quantidade }}" disabled></td>
+                        <td>{{ resultado.data_hora }}</td>
+                        <td>
+                            {% if not resultado.assinado %}
+                                <button type="button" class="edit-btn" onclick="enableEditing('row_{{ resultado.id }}')">Editar</button>
+                                <button type="button" class="save-btn" onclick="disableEditing('row_{{ resultado.id }}')">Salvar</button>
+                            {% else %}
+                                Assinado
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit">Assinar Todos</button>
+    </form>
+    <a href="{{ url_for('index') }}">Voltar</a>
+</body>
+</html>

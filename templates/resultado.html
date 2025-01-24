@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Resultado</title>
+</head>
+<body>
+    <h1>Resultado da Contagem de Serviços</h1>
+    {% for (orgao, unidade), servicos in resultados.items() %}
+        <h2>{{ orgao }} - {{ unidade }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Serviço</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for servico, quantidade in servicos %}
+                    <tr>
+                        <td>{{ servico }}</td>
+                        <td>{{ quantidade }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+    <h2>Total de Serviços: {{ total }}</h2>
+    <a href="{{ url_for('index') }}">Voltar</a>
+</body>
+</html>

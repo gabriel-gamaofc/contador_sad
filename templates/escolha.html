@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Escolha Unidade e Órgão</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#unidade').change(function() {
+                var unidade_id = $(this).val();
+                $.ajax({
+                    url: "{{ url_for('get_orgaos') }}",
+                    method: "POST",
+                    data: { unidade_id: unidade_id },
+                    success: function(data) {
+                        $('#orgao').empty();
+                        $.each(data, function(index, orgao) {
+                            $('#orgao').append('<option value="' + orgao.id + '">' + orgao.nome + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logotipo" class="logo">
+        <h1>Escolha Unidade e Órgão</h1>
+        <form action="{{ url_for('contador') }}" method="post">
+            <label for="unidade">Escolha a Unidade:</label>
+            <select name="unidade" id="unidade">
+                <option value="">Selecione a Unidade</option>
+                {% for unidade in unidades %}
+                    <option value="{{ unidade.id }}">{{ unidade.nome }}</option>
+                {% endfor %}
+            </select>
+            <label for="orgao">Escolha o Órgão:</label>
+            <select name="orgao" id="orgao">
+                <option value="">Selecione o Órgão</option>
+            </select>
+            <button type="submit">Próximo</button>
+        </form>
+    </div>
+</body>
+</html>

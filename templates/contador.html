@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='contador.css') }}">
+    <title>Contador de Serviços</title>
+    <script>
+        function updateCount(service, operation) {
+            const countElement = document.getElementById(service);
+            let count = parseInt(countElement.value) || 0;
+            if (operation === 'add') {
+                count++;
+            } else if (operation === 'subtract' && count > 0) {
+                count--;
+            }
+            countElement.value = count;
+        }
+    </script>
+</head>
+<body>
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logotipo" class="logo">
+    <h1>ATENDIMENTOS</h1>
+    <form action="{{ url_for('resultado') }}" method="post">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Serviço</th>
+                    <th>Subtrair</th>
+                    <th>Quantidade</th>
+                    <th>Adicionar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for servico in servicos %}
+                    <tr>
+                        <td>{{ servico.nome }}</td>
+                        <td>
+                            <button type="button" onclick="updateCount('{{ servico.id }}', 'subtract')">-</button>
+                        </td>
+                        <td>
+                            <input type="number" id="{{ servico.id }}" name="{{ servico.id }}" value="0" readonly>
+                        </td>
+                        <td>
+                            <button type="button" onclick="updateCount('{{ servico.id }}', 'add')">+</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit">Resultado</button>
+    </form>
+</body>
+</html>
