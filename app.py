@@ -8,9 +8,9 @@ app.secret_key = 'your_secret_key'
 
 def get_db_connection():
     conn = mysql.connector.connect(
-        host='10.1.106.200',
-        user='dba',
-        password='Sad#Suporte',
+        host='*********',
+        user='*********',
+        password='*********',
         database='servicos'
     )
     return conn
