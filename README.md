@@ -95,9 +95,32 @@ Este projeto é uma aplicação web desenvolvida com Flask para gerenciar servi�
 4. Faça o push para a branch (`git push origin feature/nova-feature`).
 5. Abra um Pull Request.
 
-## Licença
+## 🤝 Colaboradores
 
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo LICENSE para mais detalhes.
+Agradecemos às seguintes pessoas que contribuíram para este projeto:
 
----
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/gabriel-gamaofc" title="GitHub-Gabriel Gama ">
+        <img src="https://avatars.githubusercontent.com/u/130513430?v=4" width="100px;" alt="Foto do Gabriel Gama  no GitHub"/><br>
+        <sub>
+          <b>Gabriel Gama</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/joosp1" title="GitHub-João Spindola ">
+        <img src="https://avatars.githubusercontent.com/u/93791947?v=4" width="100px;" alt="Foto do João Spindola  no GitHub"/><br>
+        <sub>
+          <b>João Spindola</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
 
+
+## 📝 Licença
+
+Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
