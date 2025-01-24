@@ -28,7 +28,7 @@ Este projeto é uma aplicação web desenvolvida com Flask para gerenciar servi�
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   git clone https://github.com/gabriel-gamaofc/contador_sad.git
    ```
 
 2. Navegue até o diretório do projeto:
