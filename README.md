@@ -1,7 +1,7 @@
 ---
 
 # Projeto Flask de Gestão de Serviços
-
+<img src="https://algomais.com/wp-content/uploads/2023/04/governo_slogan_campanha.jpg" alt="Exemplo imagem">
 Este projeto é uma aplicação web desenvolvida com Flask para gerenciar serviços, unidades e órgãos. Ele permite que os usuários façam login, visualizem e editem serviços, e que coordenadores gerem relatórios de atendimentos.
 
 ## Funcionalidades
